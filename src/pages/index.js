@@ -6,9 +6,6 @@ import Masonry from "react-masonry-css"
 import Gallery from "../components/Gallery"
 import Sketch from "../components/Sketch"
 
-import "../css/reset.css"
-import "../css/masonry.css"
-
 const breakPointColsObj = {
   default: 5,
   1920: 4,
