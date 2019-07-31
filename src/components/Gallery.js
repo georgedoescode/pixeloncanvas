@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export default styled.section`
-  padding: 0 1rem;
+  padding: 1.5rem;
   margin: 0 auto;
 
   @media only screen and (max-width: 720px) {
