@@ -25,7 +25,7 @@ const IndexPage = ({ data }) => {
         <h3 className="sketch-title">
           {title} - <span>{date}</span>
         </h3>
-        <Img fluid={thumb.childImageSharp.fluid}></Img>
+        {/* <Img fluid={thumb.childImageSharp.fluid}></Img> */}
         <div className="sketch-text-content">
           <div dangerouslySetInnerHTML={{ __html: html }}></div>
         </div>
