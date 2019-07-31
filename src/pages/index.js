@@ -14,6 +14,16 @@ const breakPointColsObj = {
   720: 1,
 }
 
+let isLive = false
+
+try {
+  if (window) {
+    isLive = true
+  }
+} catch (e) {
+  console.log(e)
+}
+
 const IndexPage = ({ data }) => {
   const sketches = data.allMarkdownRemark.edges
 
@@ -25,7 +35,7 @@ const IndexPage = ({ data }) => {
         <h3 className="sketch-title">
           {title} - <span>{date}</span>
         </h3>
-        {/* <Img fluid={thumb.childImageSharp.fluid}></Img> */}
+        <Img fluid={thumb.childImageSharp.fluid}></Img>
         <div className="sketch-text-content">
           <div dangerouslySetInnerHTML={{ __html: html }}></div>
         </div>
@@ -37,15 +47,17 @@ const IndexPage = ({ data }) => {
     <>
       <SEO title="Home"></SEO>
       <main>
-        <Gallery>
-          <Masonry
-            breakpointCols={breakPointColsObj}
-            className="sketches-masonry-grid"
-            columnClassName="sketches-masonry-grid_column"
-          >
-            {galleryItems}
-          </Masonry>
-        </Gallery>
+        {isLive && (
+          <Gallery>
+            <Masonry
+              breakpointCols={breakPointColsObj}
+              className="sketches-masonry-grid"
+              columnClassName="sketches-masonry-grid_column"
+            >
+              {galleryItems}
+            </Masonry>
+          </Gallery>
+        )}
       </main>
     </>
   )
