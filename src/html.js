@@ -22,7 +22,6 @@ export default function HTML(props) {
           .sketches-masonry-grid {
             display: flex;
             margin-left: -24px;
-            width: auto;
           }
           
           .sketches-masonry-grid_column {
