@@ -1,6 +1,6 @@
 ---
 title: "cactus02"
-thumb: "./cactus.png"
+thumb: "./cactus2.png"
 date: 2019-08-05
 ---
 

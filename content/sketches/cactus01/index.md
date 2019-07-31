@@ -1,6 +1,6 @@
 ---
 title: "cactus01"
-thumb: "./cactus.jpg"
+thumb: "./cactus1.jpg"
 date: 2019-07-30
 ---
 
