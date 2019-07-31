@@ -11,34 +11,6 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-          }
-          .sketches-masonry-grid {
-            display: flex;
-            margin-left: -24px;
-          }
-          
-          .sketches-masonry-grid_column {
-            border-left: 24px solid transparent;
-            background-clip: padding-box;
-          }
-          
-          .sketches-masonry-grid_column > div {
-            margin-bottom: 24px;
-          }
-
-          .gatsby-image-wrapper {
-            width: 100%;
-          }
-        `,
-          }}
-        ></style>
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
