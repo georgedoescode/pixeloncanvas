@@ -1,7 +1,7 @@
 .sketches-masonry-grid {
   display: flex;
   margin-left: -24px;
-  padding-top: 24px;
+  width: auto;
 }
 
 .sketches-masonry-grid_column {
