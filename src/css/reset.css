@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font: calc(100% + 0.125vw) / 1.4 "Work Sans";
+  color: #222;
+}
+
+body {
+  background: #f9f9f9;
+}
