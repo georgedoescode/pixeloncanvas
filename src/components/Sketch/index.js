@@ -8,13 +8,16 @@ const Sketch = styled.div`
   border-radius: 4px;
 
   .sketch-title {
-    margin-bottom: 1rem;
     text-transform: uppercase;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
 
     span {
       font-weight: 400;
     }
+  }
+
+  .gatsby-image-wrapper {
+    margin: 1.25rem 0;
   }
 
   .sketch-text-content {
@@ -24,11 +27,19 @@ const Sketch = styled.div`
 
       li {
         margin: 1rem 0;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
       }
     }
 
     p {
       margin: 1rem 0;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
     }
   }
 `
