@@ -33,6 +33,10 @@ export default function HTML(props) {
           .sketches-masonry-grid_column > div {
             margin-bottom: 24px;
           }
+
+          .gatsby-image-wrapper {
+            width: 100%;
+          }
         `,
           }}
         ></style>

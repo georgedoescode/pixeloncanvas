@@ -16,6 +16,23 @@ const breakPointColsObj = {
 
 const IndexPage = ({ data }) => {
   const sketches = data.allMarkdownRemark.edges
+
+  const galleryItems = sketches.map(({ node: sketch }) => {
+    const { title, thumb, date } = sketch.frontmatter
+    const { html } = sketch
+    return (
+      <Sketch key={sketch.id}>
+        <h3 className="sketch-title">
+          {title} - <span>{date}</span>
+        </h3>
+        <Img fluid={thumb.childImageSharp.fluid}></Img>
+        <div className="sketch-text-content">
+          <div dangerouslySetInnerHTML={{ __html: html }}></div>
+        </div>
+      </Sketch>
+    )
+  })
+
   return (
     <>
       <SEO title="Home"></SEO>
@@ -26,21 +43,7 @@ const IndexPage = ({ data }) => {
             className="sketches-masonry-grid"
             columnClassName="sketches-masonry-grid_column"
           >
-            {sketches.map(({ node: sketch }) => {
-              const { title, thumb, date } = sketch.frontmatter
-              const { html } = sketch
-              return (
-                <Sketch key={sketch.id}>
-                  <h3 className="sketch-title">
-                    {title} - <span>{date}</span>
-                  </h3>
-                  <Img fluid={thumb.childImageSharp.fluid}></Img>
-                  <div className="sketch-text-content">
-                    <div dangerouslySetInnerHTML={{ __html: html }}></div>
-                  </div>
-                </Sketch>
-              )
-            })}
+            {galleryItems}
           </Masonry>
         </Gallery>
       </main>
