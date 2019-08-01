@@ -5,10 +5,10 @@
 }
 
 html {
-  font: calc(100% + 0.125vw) / 1.4 "Work Sans";
+  font: 100% / 1.4 "Work Sans";
   color: #222;
 }
 
 body {
-  background: #f9f9f9;
+  background: rgb(253, 253, 253);
 }
