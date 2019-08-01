@@ -4,12 +4,12 @@ import styled from "styled-components"
 
 const Sketch = styled.div`
   background: #fff;
-  padding: 1.25rem;
+  padding: 1.5rem;
   border-radius: 4px;
 
   .sketch-title {
     text-transform: uppercase;
-    font-size: 1.125rem;
+    font-size: 1.25rem;
 
     span {
       font-weight: 400;
@@ -17,7 +17,7 @@ const Sketch = styled.div`
   }
 
   .gatsby-image-wrapper {
-    margin: 1.25rem 0;
+    margin: 1.25rem 0 1.5rem 0;
   }
 
   .sketch-text-content {

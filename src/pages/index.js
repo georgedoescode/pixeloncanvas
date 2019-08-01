@@ -9,10 +9,15 @@ import Sketch from "../components/Sketch"
 const breakPointColsObj = {
   default: 5,
   1920: 4,
-  1360: 3,
-  1024: 2,
+  1440: 3,
+  1140: 2,
   720: 1,
 }
+
+/* 
+  this is a little weird, but we dont want react-masonry applying initial widths
+  to columns as it will cause a FOUC in the live environment
+*/
 
 let isLive = false
 
@@ -21,7 +26,7 @@ try {
     isLive = true
   }
 } catch (e) {
-  console.log(e)
+  console.log(`We are in the build stage!`)
 }
 
 const IndexPage = ({ data }) => {
