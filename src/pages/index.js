@@ -83,7 +83,7 @@ export const query = graphql`
             thumb {
               id
               childImageSharp {
-                fluid(maxWidth: 1000) {
+                fluid(maxWidth: 500) {
                   tracedSVG
                   aspectRatio
                   src
