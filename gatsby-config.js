@@ -15,7 +15,13 @@ module.exports = {
     },
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        stripMetadata: true,
+        defaultQuality: 100,
+      },
+    },
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-google-fonts`,
