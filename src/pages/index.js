@@ -84,7 +84,7 @@ export const query = graphql`
               id
               childImageSharp {
                 fluid(maxWidth: 500) {
-                  tracedSVG
+                  base64
                   aspectRatio
                   src
                   srcSet
