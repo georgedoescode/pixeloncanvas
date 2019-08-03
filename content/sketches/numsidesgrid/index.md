@@ -1,5 +1,5 @@
 ---
-title: "canvas01"
+title: "sides"
 thumb: "./numsidesgrid.png"
 date: 2019-08-03
 ---
