@@ -16,7 +16,8 @@ const Sketch = styled.div`
     }
   }
 
-  .gatsby-image-wrapper {
+  .gatsby-image-wrapper,
+  video {
     margin: 1.25rem 0 1.5rem 0;
   }
 

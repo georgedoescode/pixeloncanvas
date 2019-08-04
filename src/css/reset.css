@@ -12,3 +12,7 @@ html {
 body {
   background: rgb(253, 253, 253);
 }
+
+video {
+  max-width: 100%;
+}
