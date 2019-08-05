@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 import Masonry from "react-masonry-css"
 import Gallery from "../components/Gallery"
 import Sketch from "../components/Sketch"
+import Video from "../components/Video"
 
 const breakPointColsObj = {
   default: 5,
@@ -35,20 +36,19 @@ const IndexPage = ({ data }) => {
   const galleryItems = sketches.map(({ node: sketch }) => {
     const { title, thumb, date, video } = sketch.frontmatter
     const { html } = sketch
+
+    console.log(thumb.childImageSharp.fluid.aspectRatio)
     return (
       <Sketch key={sketch.id}>
         <h3 className="sketch-title">
           {title} - <span>{date}</span>
         </h3>
         {video !== null ? (
-          <video
-            autoPlay
-            muted
-            playsInline
-            loop
+          <Video
             src={video.publicURL}
+            aspectRatio={thumb.childImageSharp.fluid.aspectRatio}
             poster={thumb.childImageSharp.fluid.base64}
-          ></video>
+          ></Video>
         ) : (
           <Img fluid={thumb.childImageSharp.fluid}></Img>
         )}
