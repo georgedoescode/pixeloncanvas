@@ -19,11 +19,11 @@ const Nav = styled.nav`
     font-weight: 400;
     font-family: "Space Mono";
     font-size: 1.125rem;
-    background: #222;
+    background: #111;
     color: #fff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    padding: 0.5rem 0.5rem;
+    padding: 0.5rem 0.75rem;
 
     @media only screen and (max-width: 720px) {
       font-size: 1rem;
@@ -35,7 +35,7 @@ export default () => {
   return (
     <Nav>
       <p className="logo">
-        p<span>i</span>xeloncanvas
+        p<span>!</span>xeloncanvas
       </p>
     </Nav>
   )
