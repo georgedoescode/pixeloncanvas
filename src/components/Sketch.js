@@ -10,6 +10,7 @@ const Sketch = styled.div`
   @media only screen and (max-width: 720px) {
     border-left: none;
     border-right: none;
+    padding: 1.5rem 1rem;
   }
 
   .sketch-title {

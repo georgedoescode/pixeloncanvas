@@ -5,7 +5,7 @@
 }
 
 html {
-  font: 100% / 1.4 "Work Sans", Helvetica, sans-serif;
+  font: 1.125rem / 1.4 "Space Grotesk", Helvetica, sans-serif;
   color: #222;
 }
 
@@ -20,4 +20,10 @@ body {
 
 video {
   max-width: 100%;
+}
+
+@media only screen and (max-width: 720px) {
+  html {
+    font-size: 1.0625rem;
+  }
 }
