@@ -5,6 +5,6 @@ export default styled.section`
   margin: 0 auto;
 
   @media only screen and (max-width: 720px) {
-    padding: 0;
+    padding: 1.5rem 0;
   }
 `
