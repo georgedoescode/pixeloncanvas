@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 import Masonry from "react-masonry-css"
 import Gallery from "../components/Gallery"
 import Sketch from "../components/Sketch"
+import Video from "../components/Video"
 
 const breakPointColsObj = {
   default: 5,
@@ -33,14 +34,25 @@ const IndexPage = ({ data }) => {
   const sketches = data.allMarkdownRemark.edges
 
   const galleryItems = sketches.map(({ node: sketch }) => {
-    const { title, thumb, date } = sketch.frontmatter
+    const { title, thumb, date, video } = sketch.frontmatter
     const { html } = sketch
+
+    console.log(thumb.childImageSharp.fluid.aspectRatio)
     return (
       <Sketch key={sketch.id}>
         <h3 className="sketch-title">
           {title} - <span>{date}</span>
         </h3>
-        <Img fluid={thumb.childImageSharp.fluid}></Img>
+        {video !== null ? (
+          <Video
+            src={video.publicURL}
+            aspectRatio={thumb.childImageSharp.fluid.aspectRatio}
+            poster={thumb.childImageSharp.fluid.base64}
+          ></Video>
+        ) : (
+          <Img fluid={thumb.childImageSharp.fluid}></Img>
+        )}
+
         <div className="sketch-text-content">
           <div dangerouslySetInnerHTML={{ __html: html }}></div>
         </div>
@@ -97,6 +109,9 @@ export const query = graphql`
                   presentationHeight
                 }
               }
+            }
+            video {
+              publicURL
             }
           }
         }

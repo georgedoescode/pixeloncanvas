@@ -11,6 +11,10 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,400i,700,700i&amp;display=swap"
+        ></link>
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>

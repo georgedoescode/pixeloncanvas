@@ -23,14 +23,5 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `Work+Sans\:300,400,400i,700,700i`, // you can also specify font weights and styles
-        ],
-        display: "swap",
-      },
-    },
   ],
 }
