@@ -1,2 +1,5 @@
+import "react-image-lightbox/style.css"
+import "./src/css/worksans/stylesheet.css"
+import "./src/css/spacemono/stylesheet.css"
 import "./src/css/reset.css"
 import "./src/css/masonry.css"

@@ -9,8 +9,6 @@ const Video = styled.div`
   .video-padding {
     width: 100%;
     padding-bottom: ${props => 100 / props.aspectRatio}%;
-    background-image: url(${props => props.poster});
-    background-size: cover;
   }
 
   video {
@@ -26,13 +24,22 @@ const Video = styled.div`
 export default ({ src, aspectRatio, poster }) => {
   const [ref, inView] = useInView({
     threshold: 0,
+    triggerOnce: true,
   })
 
-  console.log(inView)
   return (
-    <Video ref={ref} aspectRatio={aspectRatio} poster={poster}>
+    <Video ref={ref} aspectRatio={aspectRatio} poster={poster} inView={inView}>
       <div className="video-padding"></div>
-      {inView && <video src={src} autoPlay muted playsInline loop></video>}
+      {inView && (
+        <video
+          src={src}
+          poster={poster}
+          autoPlay
+          muted
+          playsInline
+          loop
+        ></video>
+      )}
     </Video>
   )
 }

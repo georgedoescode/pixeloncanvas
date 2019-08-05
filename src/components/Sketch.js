@@ -5,7 +5,12 @@ import styled from "styled-components"
 const Sketch = styled.div`
   background: #fff;
   padding: 1.5rem;
-  border-radius: 4px;
+  border: 2px solid #222;
+
+  @media only screen and (max-width: 720px) {
+    border-left: none;
+    border-right: none;
+  }
 
   .sketch-title {
     text-transform: uppercase;
@@ -39,6 +44,34 @@ const Sketch = styled.div`
 
       &:last-of-type {
         margin-bottom: 0;
+      }
+    }
+
+    .view-original {
+      position: relative;
+      font-family: "Space Mono";
+      color: #222;
+      display: inline-block;
+      padding: 0.25rem 0 0.5rem 0;
+      font-size: 0.875rem;
+      cursor: pointer;
+      overflow: hidden;
+
+      &:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: "";
+        width: 100%;
+        height: 2px;
+        background: #222;
+        transform: scaleX(1);
+      }
+
+      &:hover {
+        &:after {
+          transform: scaleX(0.75);
+        }
       }
     }
   }

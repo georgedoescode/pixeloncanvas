@@ -5,12 +5,17 @@
 }
 
 html {
-  font: 100% / 1.4 "Work Sans";
+  font: 100% / 1.4 "Work Sans", Helvetica, sans-serif;
   color: #222;
 }
 
 body {
   background: rgb(253, 253, 253);
+  background-image: radial-gradient(#717171 20%, transparent 20%),
+    radial-gradient(#fff 20%, transparent 20%);
+  background-color: #fff;
+  background-position: 0 0, 3px 3px;
+  background-size: 6px 6px;
 }
 
 video {
