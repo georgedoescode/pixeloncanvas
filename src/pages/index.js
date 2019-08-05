@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import SEO from "../components/seo"
@@ -6,6 +6,7 @@ import Masonry from "react-masonry-css"
 import Gallery from "../components/Gallery"
 import Sketch from "../components/Sketch"
 import Video from "../components/Video"
+import Nav from "../components/Nav"
 
 const breakPointColsObj = {
   default: 5,
@@ -37,17 +38,17 @@ const IndexPage = ({ data }) => {
     const { title, thumb, date, video } = sketch.frontmatter
     const { html } = sketch
 
-    console.log(thumb.childImageSharp.fluid.aspectRatio)
     return (
       <Sketch key={sketch.id}>
         <h3 className="sketch-title">
           {title} - <span>{date}</span>
         </h3>
+        {/* Video or static sketch */}
         {video !== null ? (
           <Video
             src={video.publicURL}
             aspectRatio={thumb.childImageSharp.fluid.aspectRatio}
-            poster={thumb.childImageSharp.fluid.base64}
+            poster={thumb.childImageSharp.fixed.src}
           ></Video>
         ) : (
           <Img fluid={thumb.childImageSharp.fluid}></Img>
@@ -55,6 +56,7 @@ const IndexPage = ({ data }) => {
 
         <div className="sketch-text-content">
           <div dangerouslySetInnerHTML={{ __html: html }}></div>
+          <p className="view-original">View Original</p>
         </div>
       </Sketch>
     )
@@ -63,6 +65,7 @@ const IndexPage = ({ data }) => {
   return (
     <>
       <SEO title="Home"></SEO>
+      <Nav></Nav>
       <main>
         {isLive && (
           <Gallery>
@@ -107,6 +110,9 @@ export const query = graphql`
                   originalName
                   presentationWidth
                   presentationHeight
+                }
+                fixed(width: 500) {
+                  src
                 }
               }
             }
