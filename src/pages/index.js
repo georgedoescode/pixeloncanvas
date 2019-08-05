@@ -56,7 +56,7 @@ const IndexPage = ({ data }) => {
 
         <div className="sketch-text-content">
           <div dangerouslySetInnerHTML={{ __html: html }}></div>
-          <p className="view-original">View Original</p>
+          <p className="view-original">FULL-RES</p>
         </div>
       </Sketch>
     )
@@ -69,6 +69,17 @@ const IndexPage = ({ data }) => {
       <main>
         {isLive && (
           <Gallery>
+            {/* <div className="header">
+              <h1>Sketchbook</h1>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Maecenas luctus condimentum elit, eget posuere orci. Nam ut
+                sodales urna, ac gravida ligula. Vestibulum nibh leo, ultricies
+                a augue vel, semper consequat sapien. Duis placerat gravida diam
+                a scelerisque. Aliquam luctus, sem vel iaculis ornare, neque
+                massa feugiat velit, nec dictum justo tortor vitae est.
+              </p>
+            </div> */}
             <Masonry
               breakpointCols={breakPointColsObj}
               className="sketches-masonry-grid"

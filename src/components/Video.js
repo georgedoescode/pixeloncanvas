@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { useInView } from "react-intersection-observer"
+import { invoke } from "q"
 
 const Video = styled.div`
   position: relative;
@@ -27,19 +28,12 @@ export default ({ src, aspectRatio, poster }) => {
     triggerOnce: true,
   })
 
+  console.log(inView)
+
   return (
     <Video ref={ref} aspectRatio={aspectRatio} poster={poster} inView={inView}>
       <div className="video-padding"></div>
-      {inView && (
-        <video
-          src={src}
-          poster={poster}
-          autoPlay
-          muted
-          playsInline
-          loop
-        ></video>
-      )}
+      <video src={src} autoPlay muted playsInline loop></video>
     </Video>
   )
 }
