@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useState, useRef } from "react"
 import { graphql } from "gatsby"
+import Modal from "react-modal"
 import Img from "gatsby-image"
 import SEO from "../components/seo"
 import Masonry from "react-masonry-css"
@@ -15,6 +16,20 @@ const breakPointColsObj = {
   1140: 2,
   720: 1,
 }
+
+const modalStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    border: 0,
+  },
+}
+
+Modal.setAppElement(`#___gatsby`)
 
 /* 
   this is a little weird, but we dont want react-masonry applying initial widths
@@ -34,12 +49,16 @@ try {
 const IndexPage = ({ data }) => {
   const sketches = data.allMarkdownRemark.edges
 
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [lightboxImg, setLightboxImg] = useState(``)
+  const [focused, setFocused] = useState(false)
+
   const galleryItems = sketches.map(({ node: sketch }) => {
     const { title, thumb, date, video } = sketch.frontmatter
     const { html } = sketch
 
     return (
-      <Sketch key={sketch.id}>
+      <Sketch onMouseOver={() => setFocused(true)} key={sketch.id}>
         <h3 className="sketch-title">
           {title} - <span>{date}</span>
         </h3>
@@ -56,7 +75,15 @@ const IndexPage = ({ data }) => {
 
         <div className="sketch-text-content">
           <div dangerouslySetInnerHTML={{ __html: html }}></div>
-          <p className="view-original">FULL-RES</p>
+          <p
+            onClick={() => {
+              setLightboxImg(thumb.childImageSharp.fluid.originalImg)
+              setLightboxOpen(true)
+            }}
+            className="view-original"
+          >
+            FULL-RES
+          </p>
         </div>
       </Sketch>
     )
@@ -89,6 +116,13 @@ const IndexPage = ({ data }) => {
             </Masonry>
           </Gallery>
         )}
+        <Modal
+          isOpen={lightboxOpen}
+          onRequestClose={() => setLightboxOpen(false)}
+          style={modalStyles}
+        >
+          <img style={{ height: "40vmax" }} src={lightboxImg}></img>
+        </Modal>
       </main>
     </>
   )

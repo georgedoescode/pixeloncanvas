@@ -22,7 +22,7 @@ const Video = styled.div`
   }
 `
 
-export default ({ src, aspectRatio, poster }) => {
+export default ({ src, aspectRatio }) => {
   const [ref, inView] = useInView({
     threshold: 0,
     triggerOnce: true,
@@ -31,9 +31,9 @@ export default ({ src, aspectRatio, poster }) => {
   console.log(inView)
 
   return (
-    <Video ref={ref} aspectRatio={aspectRatio} poster={poster} inView={inView}>
+    <Video ref={ref} aspectRatio={aspectRatio} inView={inView}>
       <div className="video-padding"></div>
-      <video src={src} autoPlay muted playsInline loop></video>
+      {inView && <video src={src} muted playsInline loop></video>}
     </Video>
   )
 }
