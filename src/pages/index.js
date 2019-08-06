@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Modal from "react-modal"
 import Img from "gatsby-image"
@@ -51,14 +51,19 @@ const IndexPage = ({ data }) => {
 
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxImg, setLightboxImg] = useState(``)
-  const [focused, setFocused] = useState(false)
 
   const galleryItems = sketches.map(({ node: sketch }) => {
     const { title, thumb, date, video } = sketch.frontmatter
     const { html } = sketch
+    const [focus, setFocus] = useState(false)
 
     return (
-      <Sketch onMouseOver={() => setFocused(true)} key={sketch.id}>
+      <Sketch
+        isFocused={focus}
+        onMouseOver={() => setFocus(true)}
+        onMouseLeave={() => setFocus(false)}
+        key={sketch.id}
+      >
         <h3 className="sketch-title">
           {title} - <span>{date}</span>
         </h3>
@@ -68,6 +73,7 @@ const IndexPage = ({ data }) => {
             src={video.publicURL}
             aspectRatio={thumb.childImageSharp.fluid.aspectRatio}
             poster={thumb.childImageSharp.fixed.src}
+            focus={focus}
           ></Video>
         ) : (
           <Img fluid={thumb.childImageSharp.fluid}></Img>
