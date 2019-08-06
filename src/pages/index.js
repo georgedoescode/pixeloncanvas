@@ -127,7 +127,10 @@ const IndexPage = ({ data }) => {
           onRequestClose={() => setLightboxOpen(false)}
           style={modalStyles}
         >
-          <img style={{ height: "40vmax" }} src={lightboxImg}></img>
+          <img
+            style={{ width: "auto", height: "40vmax" }}
+            src={lightboxImg}
+          ></img>
         </Modal>
       </main>
     </>
