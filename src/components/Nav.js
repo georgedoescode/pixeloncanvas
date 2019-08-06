@@ -8,8 +8,8 @@ const Nav = styled.nav`
   align-items: center;
   background: #fff;
   padding: 0 25.5px;
-  border-bottom: 1px solid #222;
-  margin-bottom: 2rem;
+  border-bottom: 2px solid #222;
+  /* margin-bottom: 2rem; */
 `
 
 export default () => {
