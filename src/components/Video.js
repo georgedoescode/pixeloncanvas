@@ -1,7 +1,6 @@
-import React from "react"
+import React, { useRef, useEffect, useState } from "react"
 import styled from "styled-components"
 import { useInView } from "react-intersection-observer"
-import { invoke } from "q"
 
 const Video = styled.div`
   position: relative;
@@ -22,18 +21,28 @@ const Video = styled.div`
   }
 `
 
-export default ({ src, aspectRatio }) => {
+export default ({ src, aspectRatio, focus }) => {
   const [ref, inView] = useInView({
     threshold: 0,
     triggerOnce: true,
   })
+  const [hasHovered, setHasHovered] = useState(false)
 
-  console.log(inView)
+  const videoEl = useRef(null)
+
+  useEffect(() => {
+    if (focus) {
+      videoEl.current.play()
+      setHasHovered(true)
+    } else {
+      if (hasHovered) videoEl.current.pause()
+    }
+  })
 
   return (
     <Video ref={ref} aspectRatio={aspectRatio} inView={inView}>
       <div className="video-padding"></div>
-      {inView && <video src={src} muted playsInline loop></video>}
+      {inView && <video ref={videoEl} src={src} muted playsInline loop></video>}
     </Video>
   )
 }
