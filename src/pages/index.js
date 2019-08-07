@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
-import Modal from "react-modal"
+import Lightbox from "react-image-lightbox"
+import "react-image-lightbox/style.css"
 import Img from "gatsby-image"
 import SEO from "../components/seo"
 import Masonry from "react-masonry-css"
@@ -16,20 +17,6 @@ const breakPointColsObj = {
   1140: 2,
   720: 1,
 }
-
-const modalStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    border: 0,
-  },
-}
-
-Modal.setAppElement(`#___gatsby`)
 
 /* 
   this is a little weird, but we dont want react-masonry applying initial widths
@@ -122,16 +109,13 @@ const IndexPage = ({ data }) => {
             </Masonry>
           </Gallery>
         )}
-        <Modal
-          isOpen={lightboxOpen}
-          onRequestClose={() => setLightboxOpen(false)}
-          style={modalStyles}
-        >
-          <img
-            style={{ width: "auto", height: "40vmax" }}
-            src={lightboxImg}
-          ></img>
-        </Modal>
+        {lightboxOpen && (
+          <Lightbox
+            mainSrc={lightboxImg}
+            onCloseRequest={() => setLightboxOpen(false)}
+            enableZoom={false}
+          ></Lightbox>
+        )}
       </main>
     </>
   )
