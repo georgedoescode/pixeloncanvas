@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react"
 import styled from "styled-components"
 import { useInView } from "react-intersection-observer"
+import Img from "gatsby-image"
 
 const Video = styled.div`
   position: relative;
@@ -9,6 +10,10 @@ const Video = styled.div`
   .video-padding {
     width: 100%;
     padding-bottom: ${props => 100 / props.aspectRatio}%;
+  }
+
+  .gatsby-image-wrapper {
+    opacity: ${props => props.hasHovered && 0};
   }
 
   video {
@@ -21,7 +26,7 @@ const Video = styled.div`
   }
 `
 
-export default ({ src, aspectRatio, focus }) => {
+export default ({ src, aspectRatio, poster, focus }) => {
   const [ref, inView] = useInView({
     threshold: 0,
     triggerOnce: true,
@@ -40,11 +45,21 @@ export default ({ src, aspectRatio, focus }) => {
   })
 
   return (
-    <Video ref={ref} aspectRatio={aspectRatio} inView={inView}>
-      <div className="video-padding"></div>
-      <video ref={videoEl} muted playsInline loop>
-        <source src={src} type="video/mp4"></source>
-      </video>
+    <Video
+      ref={ref}
+      aspectRatio={aspectRatio}
+      inView={inView}
+      hasHovered={hasHovered}
+    >
+      {/* <div className="video-padding"></div> */}
+      {inView && (
+        <>
+          <video ref={videoEl} muted playsInline loop>
+            <source src={src} type="video/mp4"></source>
+          </video>
+          <Img fluid={poster}></Img>
+        </>
+      )}
     </Video>
   )
 }

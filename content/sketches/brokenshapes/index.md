@@ -1,6 +1,6 @@
 ---
 title: "brokenshapes"
-thumb: "./brokenshapes.jpg"
+thumb: "./brokenshapes2.jpg"
 video: "./broken.mp4"
 aspectRatio: 100
 date: 2019-08-04
