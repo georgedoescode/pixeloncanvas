@@ -12,10 +12,10 @@ import Nav from "../components/Nav"
 
 const breakPointColsObj = {
   default: 5,
-  1920: 4,
-  1440: 3,
-  1140: 2,
-  720: 1,
+  2160: 4,
+  1700: 3,
+  1280: 2,
+  860: 1,
 }
 
 /* 
@@ -59,7 +59,7 @@ const IndexPage = ({ data }) => {
           <Video
             src={video.publicURL}
             aspectRatio={thumb.childImageSharp.fluid.aspectRatio}
-            poster={thumb.childImageSharp.fixed.src}
+            poster={thumb.childImageSharp.fluid}
             focus={focus}
           ></Video>
         ) : (
@@ -89,17 +89,6 @@ const IndexPage = ({ data }) => {
       <main>
         {isLive && (
           <Gallery>
-            {/* <div className="header">
-              <h1>Sketchbook</h1>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Maecenas luctus condimentum elit, eget posuere orci. Nam ut
-                sodales urna, ac gravida ligula. Vestibulum nibh leo, ultricies
-                a augue vel, semper consequat sapien. Duis placerat gravida diam
-                a scelerisque. Aliquam luctus, sem vel iaculis ornare, neque
-                massa feugiat velit, nec dictum justo tortor vitae est.
-              </p>
-            </div> */}
             <Masonry
               breakpointCols={breakPointColsObj}
               className="sketches-masonry-grid"
@@ -136,7 +125,7 @@ export const query = graphql`
             thumb {
               id
               childImageSharp {
-                fluid(maxWidth: 500) {
+                fluid(maxWidth: 800) {
                   base64
                   aspectRatio
                   src
