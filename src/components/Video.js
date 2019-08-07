@@ -54,7 +54,7 @@ export default ({ src, aspectRatio, poster, focus }) => {
       {/* <div className="video-padding"></div> */}
       {inView && (
         <>
-          <video ref={videoEl} muted playsInline loop>
+          <video preload="auto" ref={videoEl} muted playsInline loop>
             <source src={src} type="video/mp4"></source>
           </video>
           <Img fluid={poster}></Img>
