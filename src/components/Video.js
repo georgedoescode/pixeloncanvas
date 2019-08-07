@@ -42,11 +42,9 @@ export default ({ src, aspectRatio, focus }) => {
   return (
     <Video ref={ref} aspectRatio={aspectRatio} inView={inView}>
       <div className="video-padding"></div>
-      {inView && (
-        <video preload="auto" ref={videoEl} muted playsInline loop>
-          <source src={src} type="video/mp4"></source>
-        </video>
-      )}
+      <video ref={videoEl} muted playsInline loop>
+        <source src={src} type="video/mp4"></source>
+      </video>
     </Video>
   )
 }
