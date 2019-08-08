@@ -1,11 +1,38 @@
-import React, { useRef, useEffect, useState } from "react"
+import React, { useRef, useState } from "react"
 import styled from "styled-components"
 import { useInView } from "react-intersection-observer"
 import Img from "gatsby-image"
+import PlayIcon from "../images/play.svg"
 
 const Video = styled.div`
   position: relative;
   margin: 1.25rem 0 1.5rem 0;
+  cursor: pointer;
+
+  .video-area {
+    position: relative;
+
+    &:hover {
+      svg {
+        fill: #fff;
+      }
+    }
+
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      pointer-events: none;
+      fill: #000;
+      stroke: #000;
+      stroke-width: 1px;
+      width: 4rem;
+      height: 4rem;
+      /* transition: transform 200ms ease-out; */
+    }
+  }
 
   .video-padding {
     width: 100%;
@@ -13,7 +40,7 @@ const Video = styled.div`
   }
 
   .gatsby-image-wrapper {
-    opacity: ${props => props.hasHovered && 0};
+    opacity: ${props => props.played && 0};
   }
 
   video {
@@ -26,39 +53,43 @@ const Video = styled.div`
   }
 `
 
-export default ({ src, aspectRatio, poster, focus }) => {
+export default ({ src, aspectRatio, poster }) => {
   const [ref, inView] = useInView({
     threshold: 0,
     triggerOnce: true,
   })
-  const [hasHovered, setHasHovered] = useState(false)
+  const [playing, setPlaying] = useState(false)
+  const [hasPlayed, setHasPlayed] = useState(false)
 
   const videoEl = useRef(null)
 
-  useEffect(() => {
-    if (focus) {
+  function videoPlayToggle() {
+    setHasPlayed(true)
+    if (!playing) {
       videoEl.current.play()
-      setHasHovered(true)
+      setPlaying(true)
     } else {
-      if (hasHovered) videoEl.current.pause()
+      videoEl.current.pause()
+      setPlaying(false)
     }
-  })
+  }
 
   return (
     <Video
+      onClick={() => videoPlayToggle()}
+      played={hasPlayed}
       ref={ref}
       aspectRatio={aspectRatio}
       inView={inView}
-      hasHovered={hasHovered}
     >
-      {/* <div className="video-padding"></div> */}
       {inView && (
-        <>
+        <div className="video-area">
+          {!playing && <PlayIcon></PlayIcon>}
           <video preload="auto" ref={videoEl} muted playsInline loop>
             <source src={src} type="video/mp4"></source>
           </video>
           <Img fluid={poster}></Img>
-        </>
+        </div>
       )}
     </Video>
   )

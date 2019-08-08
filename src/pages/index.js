@@ -42,15 +42,9 @@ const IndexPage = ({ data }) => {
   const galleryItems = sketches.map(({ node: sketch }) => {
     const { title, thumb, date, video } = sketch.frontmatter
     const { html } = sketch
-    const [focus, setFocus] = useState(false)
 
     return (
-      <Sketch
-        isFocused={focus}
-        onMouseOver={() => setFocus(true)}
-        onMouseLeave={() => setFocus(false)}
-        key={sketch.id}
-      >
+      <Sketch key={sketch.id}>
         <h3 className="sketch-title">
           {title} - <span>{date}</span>
         </h3>
@@ -60,7 +54,6 @@ const IndexPage = ({ data }) => {
             src={video.publicURL}
             aspectRatio={thumb.childImageSharp.fluid.aspectRatio}
             poster={thumb.childImageSharp.fluid}
-            focus={focus}
           ></Video>
         ) : (
           <Img fluid={thumb.childImageSharp.fluid}></Img>

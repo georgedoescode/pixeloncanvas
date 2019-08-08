@@ -78,10 +78,6 @@ const Sketch = styled.div`
   }
 `
 
-export default ({ children, ...props }) => {
-  return (
-    <Sketch onMouseOver={props.onMouseOver} onMouseLeave={props.onMouseLeave}>
-      {children}
-    </Sketch>
-  )
+export default ({ children }) => {
+  return <Sketch>{children}</Sketch>
 }
