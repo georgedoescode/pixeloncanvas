@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import Lightbox from "react-image-lightbox"
 import "react-image-lightbox/style.css"
@@ -33,11 +33,42 @@ try {
   console.log(`We are in the build stage!`)
 }
 
+// Hook
+function useWindowSize() {
+  const isClient = typeof window === "object"
+
+  function getSize() {
+    return {
+      width: isClient ? window.innerWidth : undefined,
+      height: isClient ? window.innerHeight : undefined,
+    }
+  }
+
+  const [windowSize, setWindowSize] = useState(getSize)
+
+  useEffect(() => {
+    if (!isClient) {
+      return false
+    }
+
+    function handleResize() {
+      setWindowSize(getSize())
+    }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, []) // Empty array ensures that effect is only run on mount and unmount
+
+  return windowSize
+}
+
 const IndexPage = ({ data }) => {
   const sketches = data.allMarkdownRemark.edges
 
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxImg, setLightboxImg] = useState(``)
+
+  const padding = useWindowSize().width < 720 ? 10 : 72
 
   const galleryItems = sketches.map(({ node: sketch }) => {
     const { title, thumb, date, video } = sketch.frontmatter
@@ -95,7 +126,8 @@ const IndexPage = ({ data }) => {
           <Lightbox
             mainSrc={lightboxImg}
             onCloseRequest={() => setLightboxOpen(false)}
-            enableZoom={false}
+            enableZoom={true}
+            imagePadding={padding}
           ></Lightbox>
         )}
       </main>
