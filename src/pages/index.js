@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import Lightbox from "react-image-lightbox"
-import "react-image-lightbox/style.css"
 import Img from "gatsby-image"
 import SEO from "../components/seo"
 import Masonry from "react-masonry-css"
