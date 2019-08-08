@@ -38,24 +38,30 @@ video {
   -webkit-appearance: none;
 }
 
-/* Old shadow dom for play button */
-
 *::-webkit-media-controls-play-button {
   display: none !important;
   -webkit-appearance: none;
 }
-
-/* New shadow dom for play button */
-
-/* This one works! */
 
 *::-webkit-media-controls-start-playback-button {
   display: none !important;
   -webkit-appearance: none;
 }
 
-.ril-toolbar {
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
   background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3b3b3b;
 }
 
 @media only screen and (max-width: 720px) {
