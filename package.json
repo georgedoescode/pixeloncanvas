@@ -16,7 +16,7 @@
     "gatsby-plugin-sharp": "^2.2.10",
     "gatsby-plugin-styled-components": "^3.1.2",
     "gatsby-source-filesystem": "^2.1.9",
-    "gatsby-transformer-remark": "^2.6.12",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.2.6",
     "intersection-observer": "^0.7.0",
     "prop-types": "^15.7.2",
